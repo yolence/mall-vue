@@ -1,31 +1,51 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div class="app">
+    <van-nav-bar title="是你的idol" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <transition name="sky">
+      <router-view></router-view>
+    </transition>
+
+    <van-tabbar v-model="active">
+      <van-tabbar-item icon="home-o" to="/home">home</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" to="/friends">friends</van-tabbar-item>
+      <van-tabbar-item icon="shopping-cart-o" info="20" to="/cart">cart</van-tabbar-item>
+      <van-tabbar-item icon="search" to="/search">search</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
+<script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+export default {
+  data: () => ({
+    active: 0
+  }),
+  created () {},
+  methods: {
+    onClickLeft () {
+      console.log('left')
+    }
+  },
+  components: {
+
+  }
 }
-#nav {
-  padding: 30px;
+</script>
+<style lang="less" scoped>
+.app{
+  overflow-x: hidden;
+.sky-enter{
+  transform: translateX(100%)
+
+}
+.sky-leave-to{
+  transform: translateX(-100%);
+  position: absolute;
+  left: -300%;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.sky-enter-active,
+.sky-leave-active{
+  transition: all .5s ease;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
