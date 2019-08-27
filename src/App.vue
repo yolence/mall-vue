@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <van-nav-bar title="是你的idol" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar title="是你的idol" left-text="返回" left-arrow @click-left="goback()" fixed/>
     <transition name="sky">
       <router-view></router-view>
     </transition>
@@ -21,8 +21,8 @@ export default {
   }),
   created () {},
   methods: {
-    onClickLeft () {
-      console.log('left')
+    goback () {
+      this.$router.go(-1)
     }
   },
   components: {
@@ -32,6 +32,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .app{
+  padding-top: 46px;
+  padding-bottom: 50px;
   overflow-x: hidden;
 .sky-enter{
   transform: translateX(100%)

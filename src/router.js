@@ -4,7 +4,9 @@ import Home from './views/home'
 import Friends from './views/friends'
 import Cart from './views/cart'
 import Search from './views/search'
-import newlist from './views/home/newlist'
+import Newlist from './views/home/news/newlist/'
+import newsinfo from './views/home/news/newsinfo'
+import photolist from './views/home/photos/photolist'
 
 Vue.use(Router)
 
@@ -33,7 +35,15 @@ export default new Router({
     },
     {
       path: '/home/newslist',
-      component: newlist
+      component: Newlist
+    },
+    {
+      path: '/home/newsinfo/:id',
+      component: newsinfo
+    },
+    {
+      path: '/home/photolist',
+      component: photolist
     }
 
   ]
